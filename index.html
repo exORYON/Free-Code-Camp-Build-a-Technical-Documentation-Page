@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SASS Documentation</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="main-doc">
+    <div class="left-container">
+      <nav id="navbar" class="center">
+        <div class="header-container-top">
+          <header id="nav-header" onclick="location.reload();"><h1>SASS</h1></header>
+        </div>
+
+        <div class="header-container-bottom" class="center">
+          <ul>
+            <li><a href="#syntax" class="nav-link">Syntax</a></li>
+            <li><a href="#style" class="nav-link">Style</a></li>
+            <li><a href="#variables" class="nav-link">Variables</a></li>
+            <li><a href="#operations" class="nav-link">Operations</a></li>
+            <li><a href="#modules" class="nav-link">Modules</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="right-container">
+      <h1>Documentation</h1>
+      <section class="main-section" id="syntax">
+        <header><h2>Syntax</h2></header>
+          <p>Sass supports two different syntaxes. Each one can load the other, so it's up to you and your team which one to choose.</p>
+        <h4>SCSS</h4>
+          <p>The SCSS syntax uses the file extension .scss. With a few small exceptions, it’s a superset of CSS, which means essentially all valid CSS is valid SCSS as well. Because of its similarity to CSS, it’s the easiest syntax to get used to and the most popular.</p>
+        <code>
+          @mixin button-base() {
+          @include typography(button);
+          @include ripple-surface;
+          @include ripple-radius-bounded;
+        
+          display: inline-flex;
+          position: relative;
+          height: $button-height;
+          border: none;
+          vertical-align: middle;
+        
+          &:hover { cursor: pointer; }
+        
+          &:disabled {
+            color: $mdc-button-disabled-ink-color;
+            cursor: default;
+            pointer-events: none;
+          }
+        }
+        </code>
+        
+        <h4>The Indented Syntax</h4>
+          <p>The indented syntax was Sass’s original syntax, and so it uses the file extension .sass. Because of this extension, it’s sometimes just called “Sass”. The indented syntax supports all the same features as SCSS, but it uses indentation instead of curly braces and semicolons to describe the format of the document.</p>
+          <p>In general, any time you’d write curly braces in CSS or SCSS, you can just indent one level deeper in the indented syntax. And any time a line ends, that counts as a semicolon. There are also a few additional differences in the indented syntax that are noted throughout the reference.</p>
+        <code>
+          @mixin button-base()
+          @include typography(button)
+          @include ripple-surface
+          @include ripple-radius-bounded
+
+          display: inline-flex
+          position: relative
+          height: $button-height
+          border: none
+          vertical-align: middle
+
+          &:hover
+            cursor: pointer
+
+          &:disabled
+            color: $mdc-button-disabled-ink-color
+            cursor: default
+            pointer-events: none
+        </code>
+      </section>
+  
+      <section class="main-section" id="style">
+        <header><h2>Style</h2></header>
+        <p>Style rules are the foundation of Sass, just like they are for CSS. And they work the same way: you choose which elements to style with a selector, and declare properties that affect how those elements look.</p>
+          <h5>SCSS</h5>
+        <code>
+        .button {
+          padding: 3px 10px;
+          font-size: 12px;
+          border-radius: 3px;
+          border: 1px solid #e1e4e8;
+        }
+        </code>
+          <h5>SASS</h5>
+        <code>
+        .button
+          padding: 3px 10px
+          font-size: 12px
+          border-radius: 3px
+          border: 1px solid #e1e4e8
+        </code>
+      </section>
+  
+      <section class="main-section" id="variables">
+        <header><h2>Variables</h2></header>
+        <p>Sass variables are simple: you assign a value to a name that begins with $, and then you can refer to that name instead of the value itself. But despite their simplicity, they're one of the most useful tools Sass brings to the table. Variables make it possible to reduce repetition, do complex math, configure libraries, and much more.</p>
+        <p>A variable declaration looks a lot like a property declaration: it’s written <variable>: <expression>. Unlike a property, which can only be declared in a style rule or at-rule, variables can be declared anywhere you want. To use a variable, just include it in a value.</p>
+          <h5>SCSS</h5>
+        <code>
+        $base-color: #c6538c;
+        $border-dark: rgba($base-color, 0.88);
+        
+        .alert {
+          border: 1px solid $border-dark;
+        }
+        </code>
+          <h5>SASS</h5>
+        <code>
+        $base-color: #c6538c
+        $border-dark: rgba($base-color, 0.88)
+        
+        .alert
+          border: 1px solid $border-dark
+        </code>
+      </section>
+  
+      <section class="main-section" id="operations">
+        <header><h2>Operations</h2></header>
+        <p>Sass supports a handful of useful operators for working with different values. These include the standard mathematical operators like + and *, as well as operators for various other types:</p>
+        <p></p>
+        <ul>
+          <li>== and != are used to check if two values are the same.</li>
+          <li>+, -, *, /, and % have their usual mathematical meaning for numbers, with special behaviors for units that matches the use of units in scientific math.</li>
+          <li><code><, <=, >, and >= check whether two numbers are greater or less than one another.</code></li>
+          <li>and, or, and not have the usual boolean behavior. Sass considers every value “true” except for false and null.</li>
+          <li></li>
+        </ul>
+        <code></code>
+      </section>
+  
+      <section class="main-section" id="modules">
+        <header><h2>Modules</h2></header>
+        <p></p>
+        <p></p>
+        <code></code>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
