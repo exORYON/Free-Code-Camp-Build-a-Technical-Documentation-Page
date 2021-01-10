@@ -34,7 +34,7 @@
       <section class="main-section" id="syntax">
         <header><h2>Syntax</h2></header>
           <p>Sass supports two different syntaxes. Each one can load the other, so it's up to you and your team which one to choose.</p>
-        <h4>SCSS</h4>
+        <h5>SCSS</h5>
           <p>The SCSS syntax uses the file extension .scss. With a few small exceptions, it’s a superset of CSS, which means essentially all valid CSS is valid SCSS as well. Because of its similarity to CSS, it’s the easiest syntax to get used to and the most popular.</p>
         <code>
           @mixin button-base() {
@@ -58,7 +58,7 @@
         }
         </code>
         
-        <h4>The Indented Syntax</h4>
+        <h5>The Indented Syntax</h5>
           <p>The indented syntax was Sass’s original syntax, and so it uses the file extension .sass. Because of this extension, it’s sometimes just called “Sass”. The indented syntax supports all the same features as SCSS, but it uses indentation instead of curly braces and semicolons to describe the format of the document.</p>
           <p>In general, any time you’d write curly braces in CSS or SCSS, you can just indent one level deeper in the indented syntax. And any time a line ends, that counts as a semicolon. There are also a few additional differences in the indented syntax that are noted throughout the reference.</p>
         <code>
@@ -133,20 +133,36 @@
         <p>Sass supports a handful of useful operators for working with different values. These include the standard mathematical operators like + and *, as well as operators for various other types:</p>
         <p></p>
         <ul>
-          <li>== and != are used to check if two values are the same.</li>
-          <li>+, -, *, /, and % have their usual mathematical meaning for numbers, with special behaviors for units that matches the use of units in scientific math.</li>
-          <li><code><, <=, >, and >= check whether two numbers are greater or less than one another.</code></li>
-          <li>and, or, and not have the usual boolean behavior. Sass considers every value “true” except for false and null.</li>
-          <li></li>
+          <li><code>== and != are used to check if two values are the same.</code></li>
+          <li><code>+, -, *, /, and % have their usual mathematical meaning for numbers, with special behaviors for units that matches the use of units in scientific math.</code></li>
+          <li><code>&lt;, &lt;=, &rt;, and &rt;= check whether two numbers are greater or less than one another.</code></li>
+          <li><code>and, or, and not have the usual boolean behavior. Sass considers every value “true” except for false and null.</code></li>
+          <li><code>+, -, and / can be used to concatenate strings.</code></li>
         </ul>
-        <code></code>
       </section>
   
       <section class="main-section" id="modules">
         <header><h2>Modules</h2></header>
-        <p></p>
-        <p></p>
-        <code></code>
+        <p>Sass provides many built-in modules which contain useful functions (and the occasional mixin). These modules can be loaded with the @use rule like any user-defined stylesheet, and their functions can be called like any other module member. All built-in module URLs begin with sass: to indicate that they're part of Sass itself.</p>
+        <h5>SCSS</h5>
+        <code>
+        @use "sass:color";
+        
+        .button {
+          $primary-color: #6b717f;
+          color: $primary-color;
+          border: 1px solid color.scale($primary-color, $lightness: 20%);
+        }
+        </code>
+        <h5>SASS</h5>
+        <code>
+        @use "sass:color"
+        
+        .button
+          $primary-color: #6b717f
+          color: $primary-color
+          border: 1px solid color.scale($primary-color, $lightness: 20%)
+        </code>
       </section>
     </div>
   </main>
